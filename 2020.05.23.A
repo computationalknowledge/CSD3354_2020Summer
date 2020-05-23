@@ -1,64 +1,42 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ConsoleApp17
+namespace ConsoleApp22
 {
-    public class Program
+    class Program
     {
-        static void Main(string[] args)
-        {
-            Logger log1;
-            Activity a;
-            log1 = new Logger();
-            a = new Activity("Shopping", 20);
-            log1.a = a;
-            log1.when = new DateTime(2020, 4, 21);
-            DataStructure.q1.Enqueue(log1);
-
-            log1 = new Logger();
-            a = new Activity("Movie", 10);
-            log1.a = a;
-            log1.when = new DateTime(2020, 5, 2);
-            DataStructure.q1.Enqueue(log1);
-
-            Console.WriteLine("total cost for activities is {0}", DataStructure.OutputData());
+        static void Main(string[] args)  {
+            Task task1 = new Task( new DateTime(2020, 4, 21), "Toronto", new Activity("Shopping", 20) );
         }
     }
 
-    public class DataStructure
+    public class Task
     {
-        public static Queue q1 = new Queue();
-
-        public static float OutputData()
-        {
-            float totalCost = 0;
-            foreach(var record in q1)
-            {
-                var output = ((Logger)record).a;
-                Console.WriteLine("{0} {1}", output.name, output.cost);
-                totalCost += output.cost;
-            }
-            return totalCost;
-        }
+        public Task(DateTime aDateTime, String aLocaion, Activity activ1)
+    {
+        this.dtStamp = aDateTime;
+        this.Location = aLocaion;
+        this.anActivity = activ1;
     }
-    public class Logger
-    {
-        public Activity a;
-        public DateTime when;
+    public DateTime dtStamp;
+        public String Location;
+        public Activity anActivity;
+
     }
 
     public class Activity
     {
-        public String name;
-        public float cost;
-        public Activity(string name, float cost)
-        {
-            this.name = name;
-            this.cost = cost;
-        }
+        public Activity(String descrip, Double aCost)
+    {
+        this.Description = descrip;
+        this.cost = aCost;
+    }
+        public String Description;
+        public Double cost;
+    }
+
+    public class Records
+    {
+        Queue DataStructure1;
     }
 }
