@@ -1,0 +1,53 @@
+using System;
+using System.Collections;
+
+namespace ConsoleApp22
+{
+    class Program
+    {
+        static void Main(string[] args)  {
+            // next week: we will make an html page to input task information
+            Task task1 = new Task( new DateTime(2020, 4, 21), "Toronto", new Activity("Shopping", 20) );
+            // now put the Task into the Data Structure!!!
+            // next week into database!!
+
+            Records.CreateRecord(task1);
+        }
+    }
+
+    public class Task
+    {
+        public Task(DateTime aDateTime, String aLocaion, Activity activ1)
+    {
+        this.dtStamp = aDateTime;
+        this.Location = aLocaion;
+        this.anActivity = activ1;
+    }
+    public DateTime dtStamp;
+        public String Location;
+        public Activity anActivity;
+    }
+
+    public class Activity
+    {
+        public Activity(String descrip, Double aCost)
+    {
+        this.Description = descrip;
+        this.cost = aCost;
+    }
+        public String Description;
+        public Double cost;
+    }
+
+    public class Records
+    {
+        public static Queue datarecord = new Queue();
+        // code must be within a METHOD!!!
+        public static void CreateRecord(Task aTask)
+        {
+            // what object will be put there????
+            datarecord.Enqueue(aTask);
+        }
+        
+    }
+}
